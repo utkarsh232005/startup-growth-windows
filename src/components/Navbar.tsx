@@ -1,90 +1,97 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import {
+  Navbar as ResizableNavbar,
+  NavBody,
+  NavItems,
+  MobileNav,
+  NavbarLogo,
+  NavbarButton,
+  MobileNavHeader,
+  MobileNavToggle,
+  MobileNavMenu,
+} from "@/components/ui/resizable-navbar";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const navItems = [
+    {
+      name: "Home",
+      link: "/",
+    },
+    {
+      name: "About",
+      link: "/#about",
+    },
+    {
+      name: "Startups",
+      link: "/#startups",
+    },
+  ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-background/80 backdrop-blur-md z-50 border-b border-border/40">
-      <div className="container mx-auto px-4 md:px-6 py-4">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center">
-              <span className="text-white font-bold text-xl">IC</span>
-            </div>
-            <Link to="/" className="text-xl font-bold text-foreground">
-              StartupLaunch
-            </Link>
-          </div>
-
+      <div className="container mx-auto">
+        <ResizableNavbar>
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
-            <Link to="/" className="text-foreground hover:text-primary transition-colors">
-              Home
-            </Link>
-            <Link to="/#about" className="text-foreground hover:text-primary transition-colors">
-              About
-            </Link>
-            <Link to="/#startups" className="text-foreground hover:text-primary transition-colors">
-              Startups
-            </Link>
-            <Link to="/login">
-              <Button variant="outline" className="ml-4">
-                Login
-              </Button>
-            </Link>
-            <Button>Apply Now</Button>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden">
-            <Button variant="ghost" size="icon" onClick={toggleMenu} aria-label="Toggle Menu">
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4 animate-fade-in">
-            <div className="flex flex-col space-y-4">
-              <Link 
-                to="/" 
-                className="text-foreground hover:text-primary px-2 py-1" 
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
+          <NavBody>
+            <NavbarLogo />
+            <NavItems items={navItems} />
+            <div className="flex items-center gap-4">
+              <Link to="/login">
+                <NavbarButton variant="secondary">Login</NavbarButton>
               </Link>
-              <Link 
-                to="/#about" 
-                className="text-foreground hover:text-primary px-2 py-1" 
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About
-              </Link>
-              <Link 
-                to="/#startups" 
-                className="text-foreground hover:text-primary px-2 py-1" 
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Startups
-              </Link>
-              <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-                <Button variant="outline" className="w-full">
-                  Login
-                </Button>
-              </Link>
-              <Button className="w-full">Apply Now</Button>
+              <NavbarButton variant="primary">Apply Now</NavbarButton>
             </div>
-          </div>
-        )}
+          </NavBody>
+
+          {/* Mobile Navigation */}
+          <MobileNav>
+            <MobileNavHeader>
+              <NavbarLogo />
+              <MobileNavToggle
+                isOpen={isMobileMenuOpen}
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              />
+            </MobileNavHeader>
+
+            <MobileNavMenu
+              isOpen={isMobileMenuOpen}
+              onClose={() => setIsMobileMenuOpen(false)}
+            >
+              {navItems.map((item, idx) => (
+                <Link
+                  key={`mobile-link-${idx}`}
+                  to={item.link}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="relative text-neutral-600 dark:text-neutral-300"
+                >
+                  <span className="block">{item.name}</span>
+                </Link>
+              ))}
+              <div className="flex w-full flex-col gap-4">
+                <Link to="/login">
+                  <NavbarButton
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    variant="secondary"
+                    className="w-full"
+                  >
+                    Login
+                  </NavbarButton>
+                </Link>
+                <NavbarButton
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  variant="primary"
+                  className="w-full"
+                >
+                  Apply Now
+                </NavbarButton>
+              </div>
+            </MobileNavMenu>
+          </MobileNav>
+        </ResizableNavbar>
       </div>
     </nav>
   );

@@ -11,9 +11,9 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center">
-                <span className="text-white font-bold text-xl">IC</span>
+                <span className="text-white font-bold text-xl">TBI</span>
               </div>
-              <span className="text-xl font-bold">StartupLaunch</span>
+              <span className="text-xl font-bold">TBI INCUBATION CENTER</span>
             </div>
             <p className="text-muted-foreground max-w-md">
               Supporting innovative startups and entrepreneurs through mentorship, 
@@ -57,7 +57,7 @@ const Footer = () => {
                 Tech Valley, CA 94103
               </li>
               <li className="text-muted-foreground">
-                contact@startuplaunch.com
+                contact@tbiincubation.com
               </li>
               <li className="text-muted-foreground">
                 +1 (555) 123-4567
@@ -67,7 +67,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-border/40 mt-8 pt-8 text-center text-muted-foreground">
-          <p>© {currentYear} StartupLaunch Incubation Center. All rights reserved.</p>
+          <p>© {currentYear} TBI INCUBATION CENTER. All rights reserved.</p>
         </div>
       </div>
     </footer>
