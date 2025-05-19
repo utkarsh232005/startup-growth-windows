@@ -5,7 +5,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-secondary py-12 mt-16">
+    <footer className="bg-secondary/50 py-12 mt-16 border-t border-border/40">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
@@ -66,7 +66,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
+        <div className="border-t border-border/40 mt-8 pt-8 text-center text-muted-foreground">
           <p>© {currentYear} StartupLaunch Incubation Center. All rights reserved.</p>
         </div>
       </div>

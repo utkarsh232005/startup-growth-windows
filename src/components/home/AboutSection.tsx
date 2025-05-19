@@ -35,7 +35,7 @@ const AboutSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <Card key={index} className="border-none shadow-md hover:shadow-lg transition-shadow">
+            <Card key={index} className="border-border/40 bg-card/60 shadow-lg hover:shadow-xl transition-shadow backdrop-blur-sm">
               <CardContent className="p-6 text-center">
                 <div className="flex justify-center mb-4">
                   {feature.icon}
@@ -66,11 +66,11 @@ const AboutSection = () => {
               <Button>Learn More About Us</Button>
             </div>
             <div className="relative">
-              <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-accent/20 to-primary/20 blur-xl" />
+              <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-accent/30 to-primary/30 blur-xl" />
               <img 
                 src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" 
                 alt="Our incubation space" 
-                className="relative w-full h-auto rounded-xl shadow-xl"
+                className="relative w-full h-auto rounded-xl shadow-xl border border-border/40"
               />
             </div>
           </div>
