@@ -34,7 +34,7 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 bg-background/80 backdrop-blur-md z-50 border-b border-border/40">
       <div className="container mx-auto">
-        <ResizableNavbar>
+        <ResizableNavbar className="fixed inset-x-0 top-0 z-40 w-full">
           {/* Desktop Navigation */}
           <NavBody>
             <NavbarLogo />
